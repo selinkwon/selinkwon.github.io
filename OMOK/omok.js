@@ -49,7 +49,65 @@ function setMap() {
 }
 
 function checkWin(){
-    
+    for(let i=0;i<size;i++) {
+        let cnt = 0;
+        for(let j=0;j<size;j++) {
+            if(map[i][j] == turn) {
+                cnt ++;
+            }
+            else {
+                cnt = 0;
+            }
+            if (cnt == 5) {
+                win = turn;
+            }
+        }
+    }
+
+    for(let i=0;i<size;i++) {
+        let cnt = 0;
+        for(let j=0;j<size;j++) {
+            if(map[j][i] == turn) {
+                cnt ++;
+            }
+            else {
+                cnt = 0;
+            }
+            if (cnt == 5) {
+                win = turn;
+            }
+        }
+    }
+
+    for(let i=0;i<size-4;i++) {
+        for(let j=0;j<size-4;j++) {
+            if(map[i][j] == turn) {
+                let cnt = 0;
+                for(let k=0;k<5;k++) {
+                    if(map[i+k][j+k]==turn)
+                        cnt ++;
+                }
+                if(cnt == 5) {
+                    win = turn;
+                }
+            }
+        }
+    }
+
+    for(let i=4;i<size;i++) {
+        for(let j=0;j<size-4;j++) {
+            if(map[i][j] == turn) {
+                let cnt = 0;
+                for(let k=0;k<5;k++) {  
+                     if(map[i-k][j+k]==turn)
+                        cnt ++;
+                }
+                if(cnt == 5) {
+                    win = turn;
+                }
+            }
+        }
+    }
 }
 
 function reset(){
