@@ -16,24 +16,44 @@ function setMap() {
             const img = document.createElement("img");
             box.setAttribute("id", id);
             box.setAttribute("class", "box");
-            mark.push(i,j);
+            mark.push(0);
             box.addEventListener("click", e => {
-                if(mark[i,j]===0){           
-                    if(turn === 1){
-                        img.setAttribute("src",one);
+                if (mark[i] === 0,mark[j]===0) {
+                    if (turn === 1) {
+                        img.setAttribute("src", one);
                     }
-                    else{
-                        img.setAttribute("src",two);
+                    else {
+                        img.setAttribute("src", two);
                     }
-                    mark[i,j] = turn;
-                    // checkWin();
-                    turn = turn == 1? 2:1;
+                    mark[i] = turn;
+                    checkWin();
+                    turn = turn == 1 ? 2 : 1;
                     box.append(img);
-                }  
-                console.log(mark[i,j]);
+                }
             })
             map.append(box);
         }
     }
-    console.log(mark);
+    const map1 = document.createElement("div");
+    const body = document.querySelector("body");
+    body.append(map1);
+    for (let i = 0; i < size; i++) {
+        for (let j = 0; j < size; j++) {            
+            const box = document.createElement("div");
+            box.setAttribute("class", "box1");
+            
+            map.append(box);
+        }
+    }
+
+}
+
+function checkWin(){
+    
+}
+
+function reset(){
+    turn = 1;
+    win = 0;
+    location.reload();
 }
