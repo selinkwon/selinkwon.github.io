@@ -28,6 +28,8 @@ for (let i = 0; i < headers.length; i++) {
     });
 }
 
+
+
 function Project(link, imageUrl, title, description, skills, period) {
     this.link = link;
     this.imageUrl = imageUrl;
@@ -105,3 +107,14 @@ const bookSearch = new Project(
 );
 
 addProject(bookSearch, "frontend", "contain", "center");
+
+const atm = new Project(
+    "https://github.com/selinkwon/atm.git",
+    "https://cdn-icons-png.flaticon.com/512/2385/2385270.png",
+    "SELIN BANK",
+    "Console ATM (Java mini project)",
+    ['Java'],
+    ['2023.03.13',"2023.03.13"]
+);
+
+addProject(atm, "backend", "contain", "center");
