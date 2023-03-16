@@ -96,14 +96,6 @@ const sample = new Project(
 );
 addProject(sample, "frontend", "cover", "center");
 */
-const omok = new Project(
-    "/omok",
-    "https://png.pngtree.com/png-vector/20211231/ourmid/pngtree-hand-drawn-gobang-design-elements-png-image_4076358.png",
-    "OMOK",
-    ['2023.03.13',"2023.03.13"]
-);
-
-addProject(omok, "frontend", "contain", "center")
 
 const bookSearch = new Project(
     "/booksearch",
