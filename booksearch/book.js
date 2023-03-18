@@ -25,6 +25,7 @@ searchBox.addEventListener("submit", e => {
   if (query !== "") {
     page = 1;
     searchRequest(query.value, page);
+    query.value="";
   }
 });
 
