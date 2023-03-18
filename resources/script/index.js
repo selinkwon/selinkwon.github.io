@@ -108,17 +108,6 @@ const bookSearch = new Project(
 
 addProject(bookSearch, "frontend", "contain", "center");
 
-const atm = new Project(
-    "https://github.com/selinkwon/atm.git",
-    "https://cdn-icons-png.flaticon.com/512/2385/2385270.png",
-    "SELIN BANK",
-    "Console ATM (Java mini project)",
-    ['Java'],
-    ['2023.03.13',"2023.03.13"]
-);
-
-addProject(atm, "backend", "contain", "center");
-
 const OMOK = new Project(
     "/OMOK",
     "https://png.pngtree.com/png-vector/20211231/ourmid/pngtree-hand-drawn-gobang-design-elements-png-image_4076358.png",
@@ -129,3 +118,14 @@ const OMOK = new Project(
 );
 
 addProject(OMOK, "frontend", "contain", "center");
+
+const atm = new Project(
+    "https://github.com/selinkwon/atm.git",
+    "https://img.lovepik.com/element/40170/0209.png_860.png",
+    "SELIN BANK",
+    "Console ATM (Java mini project)",
+    ['Java'],
+    ['2023.03.13',"2023.03.13"]
+);
+
+addProject(atm, "backend", "contain", "center");
