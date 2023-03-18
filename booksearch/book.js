@@ -14,10 +14,12 @@
 // fetch() 로도 구현 가능 (일부 브라우저 또는 하위 버전의 스크립트에서 호환 X)
 // -> jQuery.ajax() 메소드를 활용
 
-const query = document.querySelector(".query");
 let page = 1;
+let size = 20;
 
+const query = document.querySelector(".query");
 const searchBox = document.querySelector(".search-box");
+
 searchBox.addEventListener("submit", e => {
   e.preventDefault();
   if (query !== "") {
@@ -28,15 +30,94 @@ searchBox.addEventListener("submit", e => {
 
 function searchRequest(query, page) {
   $.ajax({
-    "url": `https://dapi.kakao.com/v3/search/book?query=${query}&page=1&size=10&target=title`,
+    "url": `https://dapi.kakao.com/v3/search/book?query=${query}&page=${page}&size=${size}&target=title`,
     "method": "GET",
     "timeout": 0,
     "headers": {
       "Authorization": "KakaoAK a8a98c70ec11ab7c7eab5505d40fe780"
     },
   }).done((response)=> {
-        // container 안에
-        // 새로 생성 및 구성 완료한 result-card 요소를 추가
+        const container = document.querySelector(".container");
+        let result = response.document;
+        for(let i=0;i<result.length;i++){
+          if(result[i].thumbnail !== ""){
+              const card = document.createElement("div");
+              card.setAttribute("class","card");
+
+              const bookImg = document.createElement("img");
+              bookImg.setAttribute("class","book-img");
+              bookImg.src = result[i].thumbnail;
+              bookImg.addEventListener("click", e =>{
+                  location.href = result[i].url;
+              })
+              card.appendChild(bookImg);
+
+              const bookTitle = document.createElement("h4");
+              bookTitle.setAttribute("class","book-title");
+              bookTitle.innerText = result[i].title;
+              card.appendChild(bookTitle);
+
+              const price = document.createElement("span");
+
+              if(result[i].sale_price > 0){
+                price.setAttribute("class","price");
+                price.innerText = result[i].sale_price + "원";
+              }
+              else{
+                price.setAttribute("class","zero");
+                price.innerText = "품절";
+              }
+              card.appendChild(price);
+
+              const bookInfo = document.createElement("p");
+              bookInfo.setAttribute("class","book-info");
+
+              card.appendChild(bookInfo);
+
+              const author = document.createElement("span");
+              author.setAttribute("class","author");
+              const publisher = document.createElement("span");
+              publisher.setAttribute("class","publisher");
+
+              author.innerText = result[i].author+" ";
+              publisher.innerText = "| "+result[i].publisher;
+
+              bookInfo.appendChild(author);
+              bookInfo.appendChild(publisher);
+
+              container.appendChild(card);
+          }
+        }
+
+        const pageMove = document.querySelector(".move-page");
+        const backBtn = document.createElement("img");
+        
+        if(page > 1){
+          backBtn.setAttribute("class","backBtn");
+          backBtn.setAttribute("src","https://em-content.zobj.net/thumbs/240/toss-face/342/left-arrow_2b05-fe0f.png");
+
+          backBtn.addEventListener("click",e=>{
+            page --;
+            searchRequest(query,page);
+          })
+        }
+
+        pageMove.append(backBtn);
+
+        pageMove.append(`${page} / ${Math.ceil(response.meta.pageable_count/size)}`);
+
+        const nextBtn = document.createElement("img");
+
+        if(response.meta.is_end === false){
+          nextBtn.setAttribute("class","nextBtn");
+          nextBtn.setAttribute("src","https://em-content.zobj.net/thumbs/240/toss-face/342/right-arrow_27a1-fe0f.png");
+
+          nextBtn.addEventListener("click",e=>{
+            page ++;
+            searchRequest(query,page);
+          })
+        }
+        pageMove.append(nextBtn);
     });
 }
 
