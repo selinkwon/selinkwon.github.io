@@ -39,7 +39,8 @@ function searchRequest(query, page) {
     },
   }).done((response)=> {
         const container = document.querySelector(".container");
-        let result = response.document;
+        const result = [];
+        result.push(response.document);
         for(let i=0;i<result.length;i++){
           if(result[i].thumbnail !== ""){
               const card = document.createElement("div");
