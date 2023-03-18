@@ -99,7 +99,7 @@ addProject(sample, "frontend", "cover", "center");
 
 const bookSearch = new Project(
     "/booksearch",
-    "https://em-content.zobj.net/thumbs/240/facebook/65/left-pointing-magnifying-glass_1f50d.png",
+    "https://png.pngtree.com/png-vector/20190115/ourmid/pngtree-cartoon-open-book-icon-reading-flipping-through-the-dictionary-open-book-png-image_345000.jpg",
     "Book Search",
     "Book Search and Inquiry Service",
     ['VanilaJS', 'jQeury', 'Kakao Search API'],
