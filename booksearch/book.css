@@ -6,7 +6,8 @@
 h1{
     text-align: center;
     margin: auto;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family:'Noto Sans', sans-serif;
+    color: rgba(8, 28, 59, 0.737);
 }
 
 .container{
@@ -23,16 +24,27 @@ h1{
     margin: auto;
 }
 
-
-
-.card{
-    width: 180px;
-    height: 300px;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin: auto;
+.search{
+    background-image: url("https://em-content.zobj.net/thumbs/240/softbank/145/left-pointing-magnifying-glass_1f50d.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    background-color: white;
+    width: 30px;
+    height: 30px;
+    margin-top: 10px;
 }
+
+.card {
+    margin: 5px 20px 5px 20px;
+    width: 180px;
+    height: 280px;
+    text-align: center;
+    overflow: hidden;
+    border: solid 2px rgba(39, 126, 180, 0.215);
+}
+
 .move-page{
     display: flex;
     justify-content: center;
@@ -41,29 +53,44 @@ h1{
 }
 
 .move-page>img {
-    width: 30px;
-    height: 40px;
+    width: 40px;
+    height: 30px;
 }
 
 .book-title{
     text-align: center;
+    height: 20px;
     overflow: hidden;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
 .price{
     font-size: medium;
     text-align: center;
+    font-family: 'Noto Sans', sans-serif;
 }
 
 .zero {
     font-size: medium;
     color: red;
     text-align: center;
+    font-family: 'Noto Sans', sans-serif;
+}
+.query {
+    width: 200px;
+    height: 25px;
 }
 
 .book-info{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     font-size: small;
-    text-align: center;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.backBtn:hover,.nextBtn:hover {
+    cursor: pointer;
 }
 
 

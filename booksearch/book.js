@@ -39,7 +39,6 @@ function searchRequest(query, page) {
     })
     .done((response) => {
 
-        console.log(response);
         const container = document.querySelector(".container");
         container.innerText = ""; 
         let result = response.documents;
@@ -69,7 +68,7 @@ function searchRequest(query, page) {
                 }
                 else{
                     price.setAttribute("class", "zero");
-                    price.innerText = "절판";
+                    price.innerText = "판매처 없음";
                 }
                 resultCard.appendChild(price);
         
@@ -79,12 +78,19 @@ function searchRequest(query, page) {
                 resultCard.appendChild(bookInfo);
     
                 const author = document.createElement("span");
-                author.setAttribute("class", "author");
+                
+                if(result[i].authors.length > 0){
+                  author.setAttribute("class", "author");
+                  author.innerText = result[i].authors+" ";
+                }
+                else{
+                  author.setAttribute("class", "author");
+                  author.innerText="저자 미상"+" ";
+                }
                 const publisher = document.createElement("span");
                 publisher.setAttribute("class", "publisher");
     
-                author.innerText = result[i].authors+" ";
-                publisher.innerText = "| "+result[i].publisher;
+                publisher.innerText ="| "+result[i].publisher;
     
                 bookInfo.appendChild(author);
                 bookInfo.appendChild(publisher);
@@ -92,24 +98,22 @@ function searchRequest(query, page) {
                 container.appendChild(resultCard);
             }
         }
-        console.log(page);
 
         const pageMove = document.querySelector(".move-page");
         pageMove.innerText = "";
-
-        const backBtn = document.createElement("img");
         
+        const backBtn = document.createElement("img");
         if(page > 1) {
             backBtn.setAttribute("class", "backBtn");
-            backBtn.setAttribute("src",`https://em-content.zobj.net/thumbs/160/microsoft/54/leftwards-black-arrow_2b05.png`);
+            backBtn.setAttribute("src","https://em-content.zobj.net/thumbs/240/toss-face/342/left-arrow_2b05-fe0f.png");
 
             backBtn.addEventListener("click", e =>{
                 page --;
                 searchRequest(query, page);
             })
+            pageMove.append(backBtn);
         }
 
-        pageMove.append(backBtn);
 
         pageMove.append(`${page} / ${Math.ceil(response.meta.pageable_count/size)}`);
 
@@ -117,15 +121,15 @@ function searchRequest(query, page) {
         
         if(response.meta.is_end === false) {
             nextBtn.setAttribute("class", "nextBtn");
-            nextBtn.setAttribute("src",`https://em-content.zobj.net/thumbs/160/microsoft/54/black-rightwards-arrow_27a1.png`);
+            nextBtn.setAttribute("src","https://em-content.zobj.net/thumbs/240/toss-face/342/right-arrow_27a1-fe0f.png");
 
             nextBtn.addEventListener("click", e =>{
                 page ++;
                 searchRequest(query, page);
             })
+            pageMove.append(nextBtn);
         }
 
-        pageMove.append(nextBtn);
 
     });
 }
