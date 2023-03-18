@@ -118,3 +118,14 @@ const atm = new Project(
 );
 
 addProject(atm, "backend", "contain", "center");
+
+const OMOK = new Project(
+    "/OMOK",
+    "https://png.pngtree.com/png-vector/20211231/ourmid/pngtree-hand-drawn-gobang-design-elements-png-image_4076358.png",
+    "OMOK",
+    "OMOK (Java mini game)",
+    ['JavaScript'],
+    ['2023.03.13', "2023.03.13"]
+);
+
+addProject(OMOK, "frontend", "contain", "center");
