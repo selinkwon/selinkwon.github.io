@@ -129,3 +129,14 @@ const atm = new Project(
 );
 
 addProject(atm, "backend", "contain", "center");
+
+const miniGame = new Project(
+    "https://github.com/selinkwon/rpg-game.git",
+    "https://thumb.ac-illust.com/53/536f5a3920b07278192be794f0b8a2d8_t.jpeg",
+    "RPG GAME",
+    "RPG GAME (Java mini game project)",
+    ['Java'],
+    ['2023.03.13',"2023.03.13"]
+);
+
+addProject(miniGame,"backend","contain","center");
