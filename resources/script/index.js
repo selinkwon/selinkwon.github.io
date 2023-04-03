@@ -130,8 +130,8 @@ const atm = new Project(
 
 addProject(atm, "backend", "contain", "center");
 
-const miniGame = new Project(
-    "https://github.com/selinkwon/rpg-game.git",
+const consol_rpg_game = new Project(
+    "https://github.com/selinkwon/poly_rpg_game.git",
     "https://thumb.ac-illust.com/53/536f5a3920b07278192be794f0b8a2d8_t.jpeg",
     "RPG GAME",
     "RPG GAME (Java mini game project)",
