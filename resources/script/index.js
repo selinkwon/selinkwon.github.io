@@ -139,4 +139,4 @@ const consol_rpg_game = new Project(
     ['2023.03.13',"2023.03.13"]
 );
 
-addProject(miniGame,"backend","contain","center");
+addProject(consol_rpg_game,"backend","contain","center");
